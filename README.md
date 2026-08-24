@@ -1,4 +1,4 @@
-# Week 12: Enhanced Portfolio with Advanced CSS & Design Systems
+# Week 10: Enhanced Portfolio with Advanced CSS & Design Systems
 ## Transform Your Portfolio into a Professional, Animated Experience
 
 ### 🎯 Learning Objectives
@@ -12,9 +12,9 @@ By completing this project, you will:
 
 ### 📚 Prerequisites
 Before starting, you should have:
-- Completed Week 12 lecture on Advanced CSS & Design Systems
+- Completed Week 10 lecture on Advanced CSS & Design Systems
 - Reviewed prep work Chapter 16 - CSS Animations & Transitions
-- (Optional but recommended) Your portfolio from Week 10 project
+- (Optional but recommended) Your portfolio from Week 9 project
 - Understanding of CSS properties, flexbox/grid, and basic JavaScript
 
 ### 🏗️ Project Overview
@@ -22,7 +22,7 @@ Transform your existing portfolio (or build a new one) into a professional, anim
 
 ### 🚀 Getting Started
 
-**First:** Accept the GitHub Classroom assignment link provided by your instructor. This will create a new repository with the Week 12 alternative starter code.
+**First:** Accept the GitHub Classroom assignment link provided by your instructor. This will create a new repository with the Week 10 alternative starter code.
 
 1. **Clone your new repository:**
    ```bash
@@ -32,14 +32,14 @@ Transform your existing portfolio (or build a new one) into a professional, anim
 
 2. **Choose your path:**
 
-#### Option A: Enhance Your Week 10 Portfolio (Recommended)
-If you completed the Week 10 portfolio project and want to enhance it:
+#### Option A: Enhance Your Week 9 Portfolio (Recommended)
+If you completed the Week 9 portfolio project and want to enhance it:
 
-1. **Copy your Week 10 portfolio files** into the cloned repository
-2. **For React-based portfolios (from Week 10):**
+1. **Copy your Week 9 portfolio files** into the cloned repository
+2. **For React-based portfolios (from Week 9):**
    ```bash
-   # Copy your entire Week 10 project
-   cp -r ~/path-to-week10-project/* .
+   # Copy your entire Week 9 project
+   cp -r ~/path-to-week9-project/* .
 
    # Install dependencies
    npm install

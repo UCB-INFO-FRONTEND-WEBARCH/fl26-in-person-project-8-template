@@ -22,45 +22,31 @@ Transform your existing portfolio (or build a new one) into a professional, anim
 
 ### 🚀 Getting Started
 
-**First:** Accept the GitHub Classroom assignment link provided by your instructor. This will create a new repository with the Week 10 alternative starter code.
+#### First: Create your own copy of this template
+This repository is a GitHub **template** (GitHub Classroom is not used this term). Make your own copy of it, then clone that copy.
 
-1. **Clone your new repository:**
+1. On this repository's page, click the green **Use this template** button and choose **Create a new repository**. On the next screen: Owner = your own GitHub account, Repository name = `in-person-project-8-<your-github-username>`, visibility **Public**. Click **Create repository**. (Your own copy of the starter, not a fork.)
+2. **Clone your new repository:**
    ```bash
-   git clone [your-github-classroom-repo-url]
-   cd [your-repo-name]
+   git clone https://github.com/<your-github-username>/in-person-project-8-<your-github-username>.git
+   cd in-person-project-8-<your-github-username>
    ```
 
-2. **Choose your path:**
+#### Second: Run it (nothing to install)
+Today's starter is three plain files, `index.html`, `styles.css` and `script.js`. There is no `npm install` and no dev server. Open the folder in VS Code and start **Live Server** (right-click `index.html`, "Open with Live Server"), or from the folder run `python3 -m http.server 8000` and open `http://localhost:8000`. Either way, every save reloads the page.
 
-#### Option A: Enhance Your Week 9 Portfolio (Recommended)
-If you completed the Week 9 portfolio project and want to enhance it:
+**What the starter gives you:** a complete one-page portfolio (`index.html`, 177 lines) with a `styles.css` that already carries the layout and a partial design system marked `TODO` (the variables, spacing and color blocks you complete in Part 1), and a `script.js` whose theme toggle is a `TODO` you fill in Part 4. The Parts below never name a file: in this starter every CSS step goes in `styles.css` and the JavaScript in `script.js`.
 
-1. **Copy your Week 9 portfolio files** into the cloned repository
-2. **For React-based portfolios (from Week 9):**
-   ```bash
-   # Copy your entire Week 9 project
-   cp -r ~/path-to-week9-project/* .
+#### Third: Choose your path
 
-   # Install dependencies
-   npm install
+#### Option A: Your In-Person Project 7 portfolio (Recommended if you finished IPP 7)
+Work in your own IPP 7 repository (the React portfolio from week 9), not in this template. Today's work is CSS and one small script, and it lands the same way in a React project:
+1. The design system (Part 1), transitions (Part 2), keyframe animations (Part 3) and polish (Part 5) go in `src/index.css` (variables, global rules) and `src/App.css` (component rules). Run `npm run dev` as last week.
+2. Part 4 (theme switching with smooth transitions) is already half-built: your `ThemeContext` from week 9 toggles `data-theme` on `<html>`. Keep it, and add only the CSS transition half of Part 4; skip the `localStorage` script, your Context already persists the theme.
+3. Submit the URL of your IPP 7 repository with today's commits pushed.
 
-   # Start the development server
-   npm run dev
-   ```
-
-3. **For HTML/CSS portfolios (from earlier weeks):**
-   ```bash
-   # Copy your HTML, CSS, and any JavaScript files
-   cp ~/path-to-portfolio/*.html .
-   cp ~/path-to-portfolio/*.css .
-   cp ~/path-to-portfolio/*.js .
-   ```
-
-#### Option B: Fresh Start with Provided Portfolio
-If starting fresh, use the provided starter files:
-
-1. **Use the existing starter files** (already in your cloned repository)
-2. **Open index.html** directly in your browser or use Live Server extension
+#### Option B: The starter in this template (Recommended if you did not finish IPP 7)
+Use the three starter files as they are. Every Part applies directly: CSS in `styles.css`, the Part 4 toggle in `script.js` (the `TODO` lines show where). Submit the URL of this repository with today's commits pushed.
 
 ### 📝 Step-by-Step Instructions
 

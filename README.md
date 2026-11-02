@@ -22,6 +22,8 @@ Transform your existing portfolio (or build a new one) into a professional, anim
 
 ### 🚀 Getting Started
 
+**Today's core is Parts 1 to 4 (about 50 minutes after a 10-minute setup). Part 5 is the stretch. Each Part ends with a Checkpoint that says what you should see.** Nothing to install today.
+
 #### First: Create your own copy of this template
 This repository is a GitHub **template** (GitHub Classroom is not used this term). Make your own copy of it, then clone that copy.
 
@@ -33,20 +35,13 @@ This repository is a GitHub **template** (GitHub Classroom is not used this term
    ```
 
 #### Second: Run it (nothing to install)
-Today's starter is three plain files, `index.html`, `styles.css` and `script.js`. There is no `npm install` and no dev server. Open the folder in VS Code and start **Live Server** (right-click `index.html`, "Open with Live Server"), or from the folder run `python3 -m http.server 8000` and open `http://localhost:8000`. Either way, every save reloads the page.
+The starter is three plain files: `index.html`, `styles.css` and `script.js`. There is no `npm install` and no dev server. Open the folder in VS Code and start **Live Server** (right-click `index.html`, "Open with Live Server"), or from the folder run `python3 -m http.server 8000` and open `http://localhost:8000`. Every save reloads the page. Keep the browser **Console** open (F12): a JavaScript error there is the first thing to look at when something does nothing.
 
-**What the starter gives you:** a complete one-page portfolio (`index.html`, 177 lines) with a `styles.css` that already carries the layout and a partial design system marked `TODO` (the variables, spacing and color blocks you complete in Part 1), and a `script.js` whose theme toggle is a `TODO` you fill in Part 4. The Parts below never name a file: in this starter every CSS step goes in `styles.css` and the JavaScript in `script.js`.
+**What the starter gives you:** a complete one-page portfolio. `index.html` already has the theme toggle button (lines 11 to 14), `nav-link` links, sections marked `animate-on-scroll` (hero, about, projects, skills, contact) and two grids marked `stagger-children` (`.projects-grid`, `.skills-grid`). `styles.css` has the layout, a partial `:root` design system, and a `TODO` comment at every spot a Part fills in, including empty `@keyframes fadeInUp {}` and `@keyframes typing {}` placeholders and empty `.animate-on-scroll` / `.stagger-children > *` rules. `script.js` already declares `themeToggle` and `root` at the top and has smooth scrolling and a navbar shadow working; its `TODO` lines mark Part 3 and Part 4.
 
-#### Third: Choose your path
+**Fill the TODO in place; do not paste a second copy.** Every code block below replaces or completes a stub that already exists. If a block repeats a line the starter already has (a selector, a `const`), keep the starter's line and add only what is new. Pasting a duplicate `const` gives `SyntaxError: Identifier has already been declared` in the Console and stops the whole file.
 
-#### Option A: Your In-Person Project 7 portfolio (Recommended if you finished IPP 7)
-Work in your own IPP 7 repository (the React portfolio from week 9), not in this template. Today's work is CSS and one small script, and it lands the same way in a React project:
-1. The design system (Part 1), transitions (Part 2), keyframe animations (Part 3) and polish (Part 5) go in `src/index.css` (variables, global rules) and `src/App.css` (component rules). Run `npm run dev` as last week.
-2. Part 4 (theme switching with smooth transitions) is already half-built: your `ThemeContext` from week 9 toggles `data-theme` on `<html>`. Keep it, and add only the CSS transition half of Part 4; skip the `localStorage` script, your Context already persists the theme.
-3. Submit the URL of your IPP 7 repository with today's commits pushed.
-
-#### Option B: The starter in this template (Recommended if you did not finish IPP 7)
-Use the three starter files as they are. Every Part applies directly: CSS in `styles.css`, the Part 4 toggle in `script.js` (the `TODO` lines show where). Submit the URL of this repository with today's commits pushed.
+**Working in your week 9 React portfolio instead?** You can, after class: the CSS ideas carry over, but the selectors and variable names in this README are the starter's, not your IPP 7 project's, and Part 3's observer needs a `useEffect` in React. Do today's Parts in this starter and port them later.
 
 ### 📝 Step-by-Step Instructions
 
@@ -119,23 +114,20 @@ What's happening here:
 
 Common mistakes to avoid:
 - Don't mix hard-coded values with variables
-- Remember to include fallback values for older browsers
-- Test both light and dark themes thoroughly
+- The toggle is not wired until Part 4. To see the dark theme now, open DevTools, select `<html>` and add `data-theme="dark"`; until Part 4 both the sun and the moon icon show side by side, which is expected.
+
+**Checkpoint (Part 1):** the page looks the same as before (the new tokens match the starter's values), and setting `data-theme="dark"` on `<html>` in DevTools flips the background and text colors.
 
 #### Part 2: Smooth Transitions & Micro-interactions (15 minutes)
 
-1. **Add hover transitions to all interactive elements:**
+1. **Add hover transitions to the buttons.** The starter's `.btn` rule already has its colors and padding; fill its `TODO` with the `transition` line, then add the two state rules under it:
 
 ```css
-/* Button transitions */
-.btn {
-  background: var(--color-primary);
-  color: white;
-  padding: var(--spacing-sm) var(--spacing-lg);
-  border-radius: 0.375rem;
-  transition: all var(--transition-base) var(--ease-in-out);
+/* inside the existing .btn rule, where the TODO is */
+  transition: transform var(--transition-base) var(--ease-in-out),
+              box-shadow var(--transition-base) var(--ease-in-out),
+              background-color var(--transition-base);
   transform: translateY(0);
-}
 
 .btn:hover {
   background: var(--color-primary-dark);
@@ -149,17 +141,14 @@ Common mistakes to avoid:
 }
 ```
 
-2. **Create smooth transitions for project cards:**
+2. **Create smooth transitions for project cards.** The starter's `.project-card` already has its background, border and `overflow: hidden`; fill its `TODO` with the `transition` line (no padding, the card's children carry it), then add the hover rules:
 
 ```css
-.project-card {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: 0.5rem;
-  padding: var(--spacing-lg);
-  transition: all var(--transition-base) var(--ease-out);
+/* inside the existing .project-card rule, where the TODO is */
+  transition: transform var(--transition-base) var(--ease-out),
+              box-shadow var(--transition-base) var(--ease-out),
+              border-color var(--transition-base);
   cursor: pointer;
-}
 
 .project-card:hover {
   transform: scale(1.02);
@@ -187,14 +176,11 @@ Common mistakes to avoid:
 }
 ```
 
-3. **Add navigation link animations:**
+3. **Add navigation link animations.** The starter's `.nav-link` already has `position: relative`; fill its `TODO` with the `transition` line and add the `::after` rules:
 
 ```css
-.nav-link {
-  position: relative;
-  color: var(--color-text-primary);
+/* inside the existing .nav-link rule, where the TODO is */
   transition: color var(--transition-fast);
-}
 
 .nav-link::after {
   content: '';
@@ -214,13 +200,43 @@ Common mistakes to avoid:
 ```
 
 What's happening here:
-- Transform and opacity changes are GPU-accelerated for smooth 60fps
+- Transform and opacity changes are GPU-accelerated for smooth 60fps, which is why these rules transition `transform` and `opacity` and name the other properties one by one instead of `all`
 - Multiple properties transition together for cohesive effects
 - Active states provide immediate feedback
 
+**Checkpoint (Part 2):** hovering a button lifts it 2px with a shadow; hovering a project card scales it slightly and its image darkens from the bottom; hovering a nav link grows an underline from the left. If a block does nothing, the selector does not match your page: check the class name in `index.html`.
+
 #### Part 3: Entrance Animations with Keyframes (15 minutes)
 
-1. **Define reusable keyframe animations:**
+Order matters here: **write the JavaScript first (step 1), then the CSS (steps 2 and 3).** The CSS hides every section until the observer marks it `visible`; if the CSS lands before the script, the page goes blank.
+
+1. **Add the IntersectionObserver.** In `script.js`, under the `INTERSECTION OBSERVER FOR ANIMATIONS` heading, replace the two `TODO` lines with:
+
+```javascript
+// Intersection Observer for entrance animations
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target); // animate once
+    }
+  });
+}, observerOptions);
+
+// Observe the sections AND the two grids (the grids carry stagger-children)
+document.querySelectorAll('.animate-on-scroll, .stagger-children').forEach(el => {
+  observer.observe(el);
+});
+```
+
+Save and check the Console: no errors. Nothing visible changes yet.
+
+2. **Define the keyframes.** In `styles.css` under `ANIMATIONS`, fill the empty `@keyframes fadeInUp {}` placeholder in place (do not add a second one), and add the other three below it:
 
 ```css
 @keyframes fadeInUp {
@@ -235,41 +251,23 @@ What's happening here:
 }
 
 @keyframes fadeInScale {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+  from { opacity: 0; transform: scale(0.9); }
+  to   { opacity: 1; transform: scale(1); }
 }
 
 @keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  from { opacity: 0; transform: translateX(-50px); }
+  to   { opacity: 1; transform: translateX(0); }
 }
 
-/* Staggered animation for lists */
+/* Staggered animation for grid children */
 @keyframes fadeInStagger {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 ```
 
-2. **Apply animations with intersection observer:**
+3. **Apply them.** Fill the three empty rules the starter already has (`.animate-on-scroll`, `.animate-on-scroll.visible`, `.stagger-children > *`) and add the `.visible` stagger rules:
 
 ```css
 /* Animation classes */
@@ -281,7 +279,11 @@ What's happening here:
   animation: fadeInUp var(--transition-slower) var(--ease-out) forwards;
 }
 
-/* Staggered animations for children */
+/* Grid children start hidden and fade in one after another once the grid is visible */
+.stagger-children > * {
+  opacity: 0;
+}
+
 .stagger-children.visible > * {
   animation: fadeInStagger var(--transition-slow) var(--ease-out) forwards;
 }
@@ -290,86 +292,49 @@ What's happening here:
 .stagger-children.visible > *:nth-child(2) { animation-delay: 100ms; }
 .stagger-children.visible > *:nth-child(3) { animation-delay: 200ms; }
 .stagger-children.visible > *:nth-child(4) { animation-delay: 300ms; }
+.stagger-children.visible > *:nth-child(5) { animation-delay: 400ms; }
+.stagger-children.visible > *:nth-child(6) { animation-delay: 500ms; }
 ```
 
-3. **Add JavaScript for scroll-triggered animations:**
+What's happening here:
+- `forwards` keeps the final frame, so an element stays visible after its animation
+- The observer fires once per element (`unobserve`), so scrolling back up does not replay it
+- The grids are observed on their own because the children's delays belong to the grid, not to the section around it
 
-```javascript
-// Intersection Observer for entrance animations
-const observerOptions = {
-  threshold: 0.1,
-  rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      // Optional: stop observing after animation
-      observer.unobserve(entry.target);
-    }
-  });
-}, observerOptions);
-
-// Observe all animated elements
-document.querySelectorAll('.animate-on-scroll').forEach(el => {
-  observer.observe(el);
-});
-```
+**Checkpoint (Part 3):** reload at the top of the page. The hero fades up at once; as you scroll, each section fades up, and the project cards and skill cards appear one after another with a short delay. **If the page is blank:** the observer is not running. Open the Console; a red `SyntaxError` or `ReferenceError` in `script.js` means a paste went wrong (a duplicated `const` is the usual one). Fix it and reload.
 
 #### Part 4: Theme Switching with Smooth Transitions (10 minutes)
 
-1. **Create a theme toggle button:**
+The toggle button already exists in `index.html` (lines 11 to 14: `<button class="theme-toggle" aria-label="Toggle theme">` with a sun and a moon span) and the starter CSS already positions it. Do not add a second button.
 
-```html
-<button class="theme-toggle" aria-label="Toggle theme">
-  <span class="sun-icon">☀️</span>
-  <span class="moon-icon">🌙</span>
-</button>
-```
-
-2. **Style the theme toggle with rotation animation:**
+1. **Make the theme change fade instead of snap.** Fill the `TODO` inside the starter's `body` rule, and the `TODO` inside `.theme-toggle`:
 
 ```css
-.theme-toggle {
-  position: fixed;
-  top: var(--spacing-lg);
-  right: var(--spacing-lg);
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: var(--color-surface);
-  border: 2px solid var(--color-border);
-  cursor: pointer;
-  transition: all var(--transition-base);
-  z-index: 1000;
-}
+/* inside body { ... }, where the TODO is */
+  transition: background-color var(--transition-slow),
+              color var(--transition-slow);
 
+/* inside .theme-toggle { ... }, where the TODO is */
+  transition: transform var(--transition-base), border-color var(--transition-base);
+
+/* add below the .theme-toggle rule */
 .theme-toggle:hover {
   transform: rotate(180deg);
   border-color: var(--color-primary);
 }
 
-/* Smooth theme transition */
-body {
-  transition: background-color var(--transition-slow),
-              color var(--transition-slow);
+@keyframes spin-once {
+  to { transform: rotate(360deg); }
 }
 
-* {
-  transition: background-color var(--transition-slow),
-              color var(--transition-slow),
-              border-color var(--transition-slow);
+.theme-toggle.spinning {
+  animation: spin-once var(--transition-slow) var(--ease-in-out);
 }
 ```
 
-3. **Implement theme switching logic:**
+2. **Wire the toggle.** In `script.js`, the two declarations at the top (`const themeToggle = ...` and `const root = ...`, lines 6 and 7) are already there: **do not paste them again.** Replace the two `TODO` lines under them with:
 
 ```javascript
-// Theme switcher
-const themeToggle = document.querySelector('.theme-toggle');
-const root = document.documentElement;
-
 // Check for saved theme preference
 const currentTheme = localStorage.getItem('theme') || 'light';
 root.setAttribute('data-theme', currentTheme);
@@ -380,17 +345,24 @@ themeToggle.addEventListener('click', () => {
   root.setAttribute('data-theme', newTheme);
   localStorage.setItem('theme', newTheme);
 
-  // Animate the toggle button
-  themeToggle.style.transform = 'rotate(360deg)';
-  setTimeout(() => {
-    themeToggle.style.transform = '';
-  }, 300);
+  // One full spin, then back to normal (removed when the animation ends)
+  themeToggle.classList.add('spinning');
+  themeToggle.addEventListener('animationend', () => themeToggle.classList.remove('spinning'), { once: true });
 });
 ```
 
-#### Part 5: Advanced Effects & Polish (15 minutes)
+What's happening here:
+- `data-theme` lives on `<html>` (`document.documentElement`), so the dark variables reach every element on the page, header and footer included
+- `localStorage` remembers the choice, so a reload keeps the theme
+- The spin is a class and a keyframe, not an inline style, so it does not fight the hover rotation
 
-1. **Add a typing animation for your hero text:**
+**Checkpoint (Part 4):** clicking the toggle fades the whole page between light and dark (no snap), the button spins once, only one icon shows at a time, and a reload keeps the theme you chose. **Parts 1 to 4 done is today's complete bar** (see Submission).
+
+#### Part 5: Advanced Effects & Polish (15 minutes, stretch)
+
+Only if Parts 1 to 4 are done and checked.
+
+1. **Add a typing animation for your hero text.** Fill the starter's empty `@keyframes typing {}` placeholder in place, add `blink`, and fill the `TODO` inside `.hero-title` with the `overflow`, `white-space`, `border-right` and `animation` lines (the starter already sets its font size):
 
 ```css
 @keyframes typing {
@@ -415,7 +387,15 @@ themeToggle.addEventListener('click', () => {
 }
 ```
 
-2. **Create floating animations for background elements:**
+2. **Create floating animations for background elements.** First give them something to animate: in `index.html`, replace the comment `<!-- TODO: Add floating shapes for background animation -->` (inside the hero) with three shapes, and make sure the hero can contain them:
+
+```html
+<div class="floating-shape" style="top: 10%; left: 10%; width: 80px; height: 80px; border-radius: 50%; background: var(--color-primary);"></div>
+<div class="floating-shape" style="top: 60%; left: 80%; width: 120px; height: 120px; border-radius: 50%; background: var(--color-primary-dark);"></div>
+<div class="floating-shape" style="top: 75%; left: 20%; width: 60px; height: 60px; border-radius: 30%; background: var(--color-primary);"></div>
+```
+
+Then in `styles.css`, add `position: relative; overflow: hidden;` to the `.hero` rule, fill the `float` keyframe placeholder (`/* TODO: Add float animation for background elements */`) and add the shape rules:
 
 ```css
 @keyframes float {
@@ -441,11 +421,11 @@ themeToggle.addEventListener('click', () => {
 .floating-shape:nth-child(3) { animation-delay: 4s; }
 ```
 
-3. **Add parallax scrolling effect:**
+3. **Add a parallax scrolling effect.** In `index.html`, add `parallax` and a speed to the hero: `<section id="home" class="hero animate-on-scroll parallax" data-speed="0.3">` (keep its other classes). In `script.js`, replace the `TODO` under `PARALLAX EFFECT` with the listener below, wrapped in the `debounce` helper the starter already defines at the bottom of the file (that is also the last `TODO`):
 
 ```javascript
-// Parallax effect for hero section
-window.addEventListener('scroll', () => {
+// Parallax effect for hero section (debounced: the helper is at the bottom of script.js)
+window.addEventListener('scroll', debounce(() => {
   const scrolled = window.pageYOffset;
   const parallaxElements = document.querySelectorAll('.parallax');
 
@@ -454,8 +434,10 @@ window.addEventListener('scroll', () => {
     const yPos = -(scrolled * speed);
     el.style.transform = `translateY(${yPos}px)`;
   });
-});
+}, 10));
 ```
+
+**Checkpoint (Part 5):** the hero title types itself out on load, three faint shapes drift behind it, and the hero slides slowly as you scroll. The starter's `TODO: Create typing animation function` in `script.js` stays empty: the CSS version above replaces it.
 
 ### 🎨 Customization Ideas
 
@@ -474,24 +456,23 @@ window.addEventListener('scroll', () => {
 - Add tilt effects on project cards using vanilla-tilt.js
 - Create custom cursors with trailing animations
 
-### 🏆 Challenge Extensions
+### 🏆 Challenge Extensions (if you finish early)
 
-**Intermediate: Performance Optimization**
-- Use `will-change` property strategically
-- Implement animation throttling for scroll events
-- Add reduced motion preferences for accessibility
+**Tier 1 (about 10 minutes): Respect reduced motion.** Add a `@media (prefers-reduced-motion: reduce)` block that sets `animation: none` and `transition: none` on everything and makes `.animate-on-scroll` and `.stagger-children > *` fully visible (`opacity: 1`).
+- **Done when:** with your OS "reduce motion" setting on (macOS: Accessibility, Display; Windows: Settings, Accessibility, Visual effects), the page loads fully visible with nothing moving, and with the setting off everything animates as before.
 
-**Advanced: Complex Animations**
-- Create a 3D card flip effect for project details
-- Build an animated timeline for your experience
-- Implement smooth page transitions
+**Tier 2 (about 15 minutes, after Tier 1): a 3D card flip.** Give one project card a front and a back face (`transform-style: preserve-3d`, `backface-visibility: hidden`) and flip it on hover with `rotateY(180deg)` under a `perspective` on the grid.
+- **Done when:** hovering that card shows its back face (a short description or links) with a smooth flip, and the other cards still scale as in Part 2.
 
-**Graduate (253A): Design System Documentation**
-- Create a style guide page showing all animations
-- Document timing functions and usage patterns
-- Build a component library with animation presets
+**Tier 3 (253A, about 20 minutes, a bounded task): a style-guide page.** Add `styleguide.html` that lists every token in your `:root` (colors as swatches, spacing as bars, each timing and easing with a small box that animates with it), using the same `styles.css`.
+- **Done when:** the page renders every token from `:root` with its name and value, flips with the theme toggle, and is linked from the footer of `index.html`.
 
 ### 🐛 Troubleshooting Guide
+
+**The page is blank (or a section never appears):**
+- Part 3's CSS hides sections until the observer adds `visible`. Open the Console (F12): a red error in `script.js` means the observer never ran. The usual one is `SyntaxError: Identifier 'themeToggle' has already been declared`: a pasted `const` that the starter already declares. Delete the duplicate and reload.
+- No error but still blank: check that the observer block is inside `script.js` (not `styles.css`) and that `index.html` loads `script.js` at the bottom (it does in the starter).
+
 
 **Animation not smooth:**
 - Check if using transform/opacity instead of position/width
@@ -530,16 +511,14 @@ window.addEventListener('scroll', () => {
 - [CodePen](https://codepen.io/) - Animation examples
 - [UI Movement](https://uimovement.com/) - UI animation patterns
 
-### ✅ Project Checklist
+### ✅ What "complete" means (complete/incomplete grade)
 
-Before submitting, ensure you have:
-- [ ] Implemented comprehensive CSS variable system
-- [ ] Added smooth transitions to all interactive elements
-- [ ] Created entrance animations for major sections
-- [ ] Built working theme switcher with persistence
-- [ ] Applied at least 3 different keyframe animations
-- [ ] Optimized animations for 60fps performance
-- [ ] Tested in multiple browsers
-- [ ] Verified accessibility with reduced motion
-- [ ] Made portfolio feel professional and polished
-- [ ] Created something you're proud to show employers
+A pushed repository with commits made today whose page shows, in this order:
+- (a) Part 1: the design-system variables in use (one `:root` block, one `[data-theme="dark"]` block)
+- (b) Part 2: a hover transition you can see on a button, a card and a nav link
+- (c) Part 3: sections fading up on scroll and the grid children staggering, with no blank page
+- (d) Part 4: the toggle fading the theme, spinning once, and surviving a reload
+
+Part 5 and the Tiers are optional. If you stop early, push what works: a page with (a) to (c) and a note in the commit message is worth more than a broken Part 4.
+
+Before you leave: `git add .`, `git commit -m "In-person project 8"`, `git push`, then paste your repository URL into the bCourses assignment.
